@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine.Assertions;
+using System.Reflection;
 
 namespace Wander.Parsing
 {
@@ -11,6 +12,15 @@ namespace Wander.Parsing
 
         static Dictionary<Type, Parser> parsers 
             = new Dictionary<Type, Parser>();
+
+        public static string ParametersToString(ParameterInfo[] parameters)
+        {
+            var output = new List<string>();
+            foreach (var p in parameters) {
+                output.Add(p.Name + ":" + p.ParameterType.Name);
+            }
+            return String.Join(" ", output);
+        }
 
         static StringParser()
         {

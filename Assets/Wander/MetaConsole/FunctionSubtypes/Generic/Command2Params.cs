@@ -26,6 +26,7 @@ namespace Wander.MetaConsole
 			defaultValues = parameters.Select(p => p.DefaultValue).ToArray();
 			concreteArgsCount = parameters.Count(p => !p.IsOptional);
 			optionalArgsCount = parameters.Count(p => p.IsOptional);
+			Usage = StringParser.ParametersToString(parameters);
 		}
 
 		protected override void InvokeInternal(string[] args)
