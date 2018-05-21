@@ -3,11 +3,11 @@ using UnityEngine.Assertions;
 
 namespace Wander.MetaConsole
 {
-        public class CommandVoid : CommandBase
+        public class Command : CommandBase
         {
         Action function;
 
-        public CommandVoid(string name, string desc, Action function)
+        public Command(string name, string desc, Action function)
             : base(name, desc)
         {
             optionalArgsCount = 0;
