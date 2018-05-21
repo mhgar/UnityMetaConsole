@@ -4,3 +4,5 @@
 /ProjectSettings
 .collabignore
 /.vscode
+**/*.csproj
+/obj
