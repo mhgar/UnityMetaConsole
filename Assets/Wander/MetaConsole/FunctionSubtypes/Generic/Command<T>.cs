@@ -8,7 +8,7 @@ namespace Wander.MetaConsole
 {
 	public class Command<T> : Command
 	{
-		public delegate void Signature(T arg1 = default(T));
+		public delegate void Signature(T arg0 = default(T));
 		Signature function;
 		object[] defaultValues;
 
