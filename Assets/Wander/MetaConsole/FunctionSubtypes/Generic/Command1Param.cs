@@ -22,7 +22,7 @@ namespace Wander.MetaConsole
 			var parameters = function.Method.GetParameters();
 			defaultValues = parameters.Select(p => p.DefaultValue).ToArray();
 			concreteArgsCount = parameters.Count(p => !p.IsOptional);
-			concreteArgsCount = parameters.Count(p => p.IsOptional);
+			optionalArgsCount = parameters.Count(p => p.IsOptional);
 		}
 
 		protected override void InvokeInternal(string[] args)
