@@ -6,7 +6,7 @@ using Wander.Parsing;
 
 namespace Wander.MetaConsole
 {
-	public class Command<T, U, V> : Command
+	public class Command<T, U, V> : CommandBase
 	{
 		public delegate void Signature(
             T arg0 = default(T), 

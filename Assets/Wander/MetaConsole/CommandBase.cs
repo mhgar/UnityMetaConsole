@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 namespace Wander.MetaConsole
 {
-  public abstract class Command : ICommand
+  public abstract class CommandBase : ICommand
   {
     public string Name { get; private set; }
     public string Description { get; set; }
@@ -12,7 +12,7 @@ namespace Wander.MetaConsole
     protected int concreteArgsCount = 0;
     protected int optionalArgsCount = Int32.MaxValue;
 
-    public Command(string name, string desc)
+    public CommandBase(string name, string desc)
     {
       Assert.IsNotNull(name);
       Assert.IsNotNull(desc);

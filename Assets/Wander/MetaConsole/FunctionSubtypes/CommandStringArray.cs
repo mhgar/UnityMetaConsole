@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 namespace Wander.MetaConsole
 {
-  public class CommandStringArray : Command
+  public class CommandStringArray : CommandBase
   {
     Action<string[]> function;
 
