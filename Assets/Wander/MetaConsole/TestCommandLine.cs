@@ -14,7 +14,8 @@ public class TestCommandLine : MonoBehaviour {
 			new Command<string, int>("connect", "Connect to a server.", Connect)
 		);
 
-		CommandLine.Execute("connect;connect hello;connect hello 24");
+		CommandLine.Execute("connect;connect hello;connect hello 24;connect hello there");
+		CommandLine.ExecuteArgs("connect", "1", "2", "3");
 	}
 	
 	// Update is called once per frame

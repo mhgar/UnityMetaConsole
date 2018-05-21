@@ -19,7 +19,7 @@ namespace Wander.MetaConsole
 		public static ICommand AddCommand(ICommand command)
 		{
 			Assert.IsFalse(HasCommand(command.Name), command.Name + " is not unique.");
-			Assert.IsNull(command, "Command supplied cannot be null.");
+			Assert.IsNotNull(command, "Command supplied cannot be null.");
 
 			commands.Add(command);
 			return command;
