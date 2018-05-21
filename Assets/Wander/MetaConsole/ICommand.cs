@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Wander.MetaCommand
+namespace Wander.MetaConsole
 {
 	public interface ICommand
 	{

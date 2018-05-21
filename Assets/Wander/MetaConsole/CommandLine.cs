@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine.Assertions;
 using System.Text;
 
-namespace Wander.MetaCommand
+namespace Wander.MetaConsole
 {
 	public static class CommandLine
 	{
