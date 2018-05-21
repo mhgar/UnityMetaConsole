@@ -51,8 +51,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Wander\MetaConsole\CommandFunction.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\Command.cs" />
      <Compile Include="Assets\Wander\MetaConsole\CommandLine.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\FunctionSubtypes\CommandStringArray.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\FunctionSubtypes\CommandVoid.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\FunctionSubtypes\Generic\Command1Param.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\FunctionSubtypes\Generic\Command2Params.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\FunctionSubtypes\Generic\Command3Params.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\FunctionSubtypes\Generic\Command4Params.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\FunctionSubtypes\Generic\Command5Params.cs" />
+     <Compile Include="Assets\Wander\MetaConsole\FunctionSubtypes\Generic\Parser.cs" />
      <Compile Include="Assets\Wander\MetaConsole\ICommand.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/maxwell/Projects/Unity/MetaConsole/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
