@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICommand
+namespace Wander.MetaCommand
 {
-	string Name { get; }
-	string Description { get; set; }
-	string Usage { get; }
-	void Invoke(params string[] args);
+	public interface ICommand
+	{
+		string Name { get; }
+		string Description { get; set; }
+		string Usage { get; }
+		void Invoke(params string[] args);
+	}
 }
