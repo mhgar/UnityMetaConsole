@@ -5,4 +5,5 @@
 .collabignore
 /.vscode
 **/*.csproj
+Assembly-CSharp.csproj
 /obj
