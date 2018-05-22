@@ -20,11 +20,19 @@ namespace Wander.MetaConsole
 
 		static CommandLine()
 		{
+			InitCommandLine();
+		}
+
+		public static void InitCommandLine()
+		{
+			commands.Clear();
+
+			UnityEngine.Debug.Log("Command line init.");
 			// Add static methods tagged with the AutoCommand attribute.
 			// The AutoCommandHandler is not a fun read unless you enjoy hard core
 			// type abuse.
-			var cmds = AutoCommandHandler.GenerateAutoCommandsList();
-			commands.AddRange(cmds);
+			commands.AddRange(AutoCommandHandler.GenerateAutoCommandsList());
+			commands.AddRange(BuiltInVariables.GetVariableList());
 		}
 
 		public static T AddCommand<T>(T command) where T : ICommand

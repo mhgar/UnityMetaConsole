@@ -51,7 +51,6 @@ namespace Wander.MetaConsole
           var paramTypes = parameters.Select(p => p.ParameterType).ToArray();
           var generic = typeof(Command<>).MakeGenericType(paramTypes);
           var signature = generic.GetConstructors()[0].GetParameters()[2].ParameterType;
-          Debug.Log(ac.Method.CreateDelegate(signature));
           command = (ICommand) Activator.CreateInstance(
             generic, 
             ac.Attribute.Name, 
