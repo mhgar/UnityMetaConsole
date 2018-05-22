@@ -8,7 +8,7 @@ namespace Wander.MetaConsole
     public float Max { get; private set; }
 
     public CommandVariableFloat(
-      string name, string desc, float value = 0.0f, float min = -float.MinValue,
+      string name, string desc, float value = 0.0f, float min = float.MinValue,
       float max = float.MaxValue, bool archive = false, bool latched = false)
         : base (name, desc, value, archive, latched)
     {

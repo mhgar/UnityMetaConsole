@@ -27,7 +27,7 @@ namespace Wander.MetaConsole
     public CommandVariable(
       string name, 
       string desc, 
-      T value = default(T), 
+      T value = default(T),
       bool archive = false, 
       bool latched = false)
         : base(name, desc)
@@ -52,7 +52,7 @@ namespace Wander.MetaConsole
     /// an int between 0 and 100.
     protected abstract T Clamp(T value);
     
-    void SetValue(T value)
+    protected void SetValue(T value)
     {
       if (latched) {
         latchValue = Clamp(value);
@@ -61,7 +61,7 @@ namespace Wander.MetaConsole
       }
     }
 
-    string PrintValue()
+    protected string PrintValue()
     {
       var str = new StringBuilder();
       str.Append(Value);

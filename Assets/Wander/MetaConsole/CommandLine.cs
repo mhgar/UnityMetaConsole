@@ -27,11 +27,10 @@ namespace Wander.MetaConsole
 			commands.AddRange(cmds);
 		}
 
-		/// Add a command, throws an exception if the name is not unique.
-		public static ICommand AddCommand(ICommand command)
+		public static T AddCommand<T>(T command) where T : ICommand
 		{
 			Assert.IsFalse(HasCommand(command.Name), command.Name + " is not unique.");
-			Assert.IsNotNull(command, "Command supplied cannot be null.");
+			Assert.IsFalse(command == null, "Command supplied cannot be null.");
 
 			commands.Add(command);
 			return command;
