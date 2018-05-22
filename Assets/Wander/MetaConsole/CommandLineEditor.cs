@@ -19,7 +19,8 @@ namespace Wander.MetaConsole
     {
       CommandLine.OnWrite.AddListener(output.Write);
       
-      // Allow commands to be run
+      GUILayout.TextArea(output.GetText(), GUILayout.MinHeight(200.0f));
+
       GUILayout.BeginHorizontal();
       input = GUILayout.TextField(input);
       if (GUILayout.Button("Execute")) {
@@ -27,7 +28,6 @@ namespace Wander.MetaConsole
       }
       GUILayout.EndHorizontal();
 
-      GUILayout.TextArea(output.GetText(), GUILayout.MinHeight(50.0f));
       if (GUILayout.Button("Clear")) {
         output.Clear();
       }
@@ -41,7 +41,7 @@ namespace Wander.MetaConsole
         GUILayout.EndHorizontal();
       }
 
-      CommandLine.OnWrite.RemoveListener(output.Write)
+      CommandLine.OnWrite.RemoveListener(output.Write);
     }
   }
 }
