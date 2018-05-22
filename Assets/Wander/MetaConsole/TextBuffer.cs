@@ -52,5 +52,10 @@ namespace Wander.MetaConsole
     {
       return buffer.ToString();
     }
+
+    public void Clear()
+    {
+      buffer.Length = 0;
+    }
   }
 }

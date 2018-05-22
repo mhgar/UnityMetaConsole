@@ -13,7 +13,10 @@ namespace Wander.MetaConsole
 		
 		/// Invoked when Write or WriteLine is called with the message supplied.
 		public static readonly WriteEvent OnWrite = new WriteEvent();
-			static List<ICommand> commands = new List<ICommand>();
+		public static IReadOnlyCollection<ICommand> Commands 
+			{ get { return commands.AsReadOnly(); } }
+
+		static List<ICommand> commands = new List<ICommand>();
 
 		/// Add a command, throws an exception if the name is not unique.
 		public static ICommand AddCommand(ICommand command)
@@ -60,7 +63,7 @@ namespace Wander.MetaConsole
 			if (args == null || args.Length < 1) return;
 
 			if (!HasCommand(args[0])) {
-				WriteLine("{0}: command not found.");
+				WriteLine("{0}: command not found.", args[0]);
 				return;
 			}
 
