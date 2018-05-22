@@ -20,6 +20,9 @@ namespace Wander.MetaConsole
 
 		static CommandLine()
 		{
+			// Add static methods tagged with the AutoCommand attribute.
+			// The AutoCommandHandler is not a fun read unless you enjoy hard core
+			// type abuse.
 			var cmds = AutoCommandHandler.GenerateAutoCommandsList();
 			commands.AddRange(cmds);
 		}
@@ -107,30 +110,6 @@ namespace Wander.MetaConsole
 		public static string[] Tokenize(string input)
 		{
 			return input.Split(' ');
-		}
-
-		[AutoCommand("man", "Give the description and usage of a command.")]
-		public static void Man(string command)
-		{
-			var commandRef = GetCommand(command);
-
-			if (commandRef != null) {
-				CommandLine.WriteLine("{0}\t{1}\nUsage: {2}", commandRef.Name, commandRef.Description, commandRef.Usage);
-			} else {
-				CommandLine.WriteLine("No such command \"{0}\".", command);
-			}
-		}
-
-		[AutoCommand("echo", "Repeat all input that follows to the command line.")]
-		public static void Echo(string[] args)
-		{
-			CommandLine.WriteLine(String.Join(" ", args));
-		}
-
-		[AutoCommand("quit", "Quit the game or stop play mode.")]
-		public static void Quit()
-		{
-			CommandLine.WriteLine("Quitting...");
 		}
 	}
 }
