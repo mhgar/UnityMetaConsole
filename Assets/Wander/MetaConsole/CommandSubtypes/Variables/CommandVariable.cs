@@ -5,6 +5,9 @@ using UnityEngine.Assertions;
 
 namespace Wander.MetaConsole
 {
+  /// A base class for supporting type safe command line variables. Extend this
+  /// class and implement the method for Clamping values between a given
+  /// range.
   public abstract class CommandVariable<T> : CommandBase
   {
     /// The current value, or latched value if this variable is latched.
@@ -18,11 +21,16 @@ namespace Wander.MetaConsole
     T currentValue;
     T latchValue;
     T defaultValue;
-    bool latched = false;
-    bool archive = false;
+    bool latched = false; // If the variable must wait until an unlatch event to be set.
+    bool archive = false; // If the variable saves into a file when written.
 
-    public CommandVariable(string name, string desc, T value = default(T), bool archive = false, bool latched = false)
-      : base(name, desc)
+    public CommandVariable(
+      string name, 
+      string desc, 
+      T value = default(T), 
+      bool archive = false, 
+      bool latched = false)
+        : base(name, desc)
     {
       // Can't use Assert.IsNotNull because T may not be a reference type.
       // Considering removing the ability to use reference types that are not
@@ -40,9 +48,8 @@ namespace Wander.MetaConsole
       this.archive = archive;
     }
 
-    /// Take in a value and apply things such as a minimum and maximum or
-    /// maximum number of characters or anything that might limit the ranges of
-    /// possibles values.
+    /// Clamp a given value used for limiting the range of possible values, i.e.
+    /// an int between 0 and 100.
     protected abstract T Clamp(T value);
     
     void SetValue(T value)
