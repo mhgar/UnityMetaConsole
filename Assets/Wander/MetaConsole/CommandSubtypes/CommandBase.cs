@@ -29,7 +29,7 @@ namespace Wander.MetaConsole
       if (args.Length < concreteArgsCount ||
           args.Length > concreteArgsCount + optionalArgsCount)
       {
-        CommandLine.WriteLine("Incorrect argument count, usage: {0}.", Usage);
+        CommandLine.WriteLine("Incorrect argument count. Usage: {0}.", Usage);
       }
       else
       {

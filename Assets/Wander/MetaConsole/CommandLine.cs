@@ -48,6 +48,7 @@ namespace Wander.MetaConsole
 			var inputs = input.Split(';');
 			
 			foreach (var i in inputs) {
+				CommandLine.WriteLine("$ " + i);
 				var tokens = Tokenize(i);
 				ExecuteArgs(tokens);
 			}

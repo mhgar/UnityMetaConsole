@@ -34,7 +34,7 @@ namespace Wander.MetaConsole
 					case 1: function(StringParser.Parse<T>(args[0])); break;
 				}
 			} catch (Exception e){
-				Console.WriteLine("{0}, usage {1}", e.Message, Usage);
+				CommandLine.WriteLine("{0}. Usage {1}", e.Message, Usage);
 			}
 		}
 	}

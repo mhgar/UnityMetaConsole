@@ -77,7 +77,7 @@ namespace Wander.MetaConsole
                         break;
 				}
 			} catch (Exception e){
-				Console.WriteLine("{0}, usage {1}", e.Message, Usage);
+				CommandLine.WriteLine("{0}. Usage {1}", e.Message, Usage);
 			}
 		}
 	}

@@ -59,7 +59,7 @@ namespace Wander.Parsing
         {
             Type t = typeof(T);
             if (!HasParser(t)) {
-                throw new InvalidOperationException("No parser for type " + t);
+                throw new InvalidOperationException("No parser for type " + t + ".");
             }
 
             return (T)parsers[t](input);

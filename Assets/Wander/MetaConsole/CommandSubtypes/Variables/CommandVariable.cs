@@ -21,7 +21,7 @@ namespace Wander.MetaConsole
     bool latched = false;
     bool archive = false;
 
-    public CommandVariable(string name, string desc, T value = default(T), bool archive = false)
+    public CommandVariable(string name, string desc, T value = default(T), bool archive = false, bool latched = false)
       : base(name, desc)
     {
       // Can't use Assert.IsNotNull because T may not be a reference type.
@@ -70,11 +70,19 @@ namespace Wander.MetaConsole
     {
       try {
 				switch(args.Length) {
-					case 0: Console.WriteLine(PrintValue()); break;
-					case 1: SetValue(StringParser.Parse<T>(args[0])); break;
+					case 0: 
+            CommandLine.WriteLine(
+              "{0} ({1}): {2}\nValue is {3}", 
+              Name, typeof(T), Description, PrintValue()
+              ); 
+            break;
+					case 1: 
+            SetValue(StringParser.Parse<T>(args[0]));
+            CommandLine.WriteLine("{0} << {1}", Name, PrintValue());
+            break;
 				}
 			} catch (Exception e){
-				Console.WriteLine("{0}, usage {1}", e.Message, Usage);
+				CommandLine.WriteLine("{0} sage: {1}", e.Message, Usage);
 			}
     }
   }
