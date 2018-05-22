@@ -37,6 +37,7 @@ namespace Wander.MetaConsole
       }
     }
 
+    /// Called after checking the argument count.
     protected abstract void InvokeInternal(string[] args);
   }
 }
