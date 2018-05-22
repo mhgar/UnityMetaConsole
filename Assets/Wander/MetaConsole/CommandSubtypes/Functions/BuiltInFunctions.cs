@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Wander.MetaConsole
 {
+  /// A container class used for storing built-in functions for the command
+  /// line. This is for built-in functions that are useful for any type of
+  /// program.
   public static class BuiltInFunctions
   {
     // We use AutoCommand here because we're lazy. Look at the static

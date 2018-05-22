@@ -9,6 +9,8 @@ using UnityEngine;
 
 namespace Wander.MetaConsole
 {
+  /// A class that gathers all the AutoCommand attributed functions inside the
+  /// current assembly and turns them into a list variable Command<> objects.
   public static class AutoCommandHandler
   {
     struct AutoCommandInfo
