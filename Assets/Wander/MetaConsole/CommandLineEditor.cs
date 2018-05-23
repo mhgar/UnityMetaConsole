@@ -18,7 +18,6 @@ namespace Wander.MetaConsole
     void OnGUI() 
     {
       CommandLine.OnWrite.AddListener(output.Write);
-      
       GUILayout.TextArea(output.GetText(), GUILayout.MinHeight(200.0f));
 
       GUILayout.BeginHorizontal();

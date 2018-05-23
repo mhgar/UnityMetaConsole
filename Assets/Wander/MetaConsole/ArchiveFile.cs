@@ -45,8 +45,9 @@ namespace Wander.MetaConsole
     void ReadEntries()
     {
       entries.Clear();
-      var inputs = File.ReadAllText(file).Split('\n', ';');
+      var inputs = File.ReadAllText(file).Split('\n');
       foreach (var input in inputs) {
+        if (input.StartsWith("#")) continue;
         var tokens = input.Split(new char[] { ' ' }, 2);
         if (tokens.Length != 2) continue; // Skip this one, archive incorrectly.
         entries.Add(tokens[0], tokens[1]);        
