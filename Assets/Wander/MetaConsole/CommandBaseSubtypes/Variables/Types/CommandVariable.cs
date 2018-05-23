@@ -8,7 +8,7 @@ namespace Wander.MetaConsole
   /// A base class for supporting type safe command line variables. Extend this
   /// class and implement the method for Clamping values between a given
   /// range.
-  public abstract class CommandVariable<T> : CommandBase
+  public abstract class CommandVariableBase<T> : CommandBase
   {
     /// The current value, or latched value if this variable is latched.
     public T Value { get { return currentValue; } set { SetValue(value); } }
@@ -24,7 +24,7 @@ namespace Wander.MetaConsole
     bool latched = false; // If the variable must wait until an unlatch event to be set.
     bool archive = false; // If the variable saves into a file when written.
 
-    public CommandVariable(
+    public CommandVariableBase(
       string name, 
       string desc, 
       T value = default(T),

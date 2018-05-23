@@ -2,7 +2,7 @@ using System;
 
 namespace Wander.MetaConsole
 {
-  public class CommandVariableString : CommandVariable<string>
+  public class CommandVariableString : CommandVariableBase<string>
   {
     public int MaxChars { get; set; }
 

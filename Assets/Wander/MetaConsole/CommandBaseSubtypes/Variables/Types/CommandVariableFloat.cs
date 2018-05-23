@@ -2,7 +2,7 @@ using System;
 
 namespace Wander.MetaConsole
 {
-  public class CommandVariableFloat : CommandVariable<float>
+  public class CommandVariableFloat : CommandVariableBase<float>
   {
     public float Min { get; private set; }
     public float Max { get; private set; }
