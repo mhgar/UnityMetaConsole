@@ -7,3 +7,4 @@
 *.csproj
 /obj
 /obj/Debug
+*.sln
