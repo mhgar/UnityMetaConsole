@@ -36,7 +36,7 @@ var host_timescale = new CommandVariableFloat("host_timescale", "Timescale of th
 CommandLine.AddCommand(host_timescale);
 ```
 
-It is the intention that the host_timescale be referenced by other scripts outside of the command line. Unlike most other command lines, you can read and set variable.Value without having to use a string value as an intermediary. Variables are only parsed from a string if they are set from the command line interface.
+It is the intention that the host_timescale be referenced by other scripts outside of the command line. Unlike most other command lines, you can read and set ``variable.Value`` without having to use a string value as an intermediary. Variables are only parsed from a string if they are set from the command line interface. This greatly improves performance in cases where a variable needs to be read every frame.
 
 Unlike functions which are generic, variable types must be created at design time. Currently, there are variable types for strings and intergers, and it is very easy to create your own types.
 
