@@ -12,6 +12,7 @@ namespace Wander.MetaConsole
         : base (name, desc, value, archive, latched)
     {
       MaxChars = maxChars;
+      optionalArgsCount = int.MaxValue;
     }
 
     protected override string Clamp(string value)

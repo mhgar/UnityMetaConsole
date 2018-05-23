@@ -37,7 +37,8 @@ namespace Wander.MetaConsole
       "con_scrollback",
       "The number of lines that are stored in the console's line buffer.",
       value:256,
-      min:1
+      min:1,
+      archive:true
     );
   }
 }
