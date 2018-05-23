@@ -18,6 +18,10 @@ namespace Wander.MetaConsole
 		public static IReadOnlyCollection<ICommand> Commands 
 			{ get { return commands.AsReadOnly(); } }
 
+		// Used by command variables so they don't write to the archive file because
+		// executing the archive file changed their values.
+		public static bool ShouldWriteArchive { get; private set; }
+
 		static List<ICommand> commands = new List<ICommand>();
 
 		static CommandLine()
@@ -27,8 +31,6 @@ namespace Wander.MetaConsole
 
 		public static void InitCommandLine()
 		{
-			if (Archive != null)
-				Debug.LogWarning("Reference not cleared on assembly reload...");
 
 			commands.Clear();
 
@@ -40,7 +42,9 @@ namespace Wander.MetaConsole
 			commands.AddRange(BuiltInVariables.GetVariableList());
 
 			Archive = new ArchiveFile("archive.cfg");
+			ShouldWriteArchive = false;
 			Archive.Execute();
+			ShouldWriteArchive = true;
 		}
 
 		public static T AddCommand<T>(T command) where T : ICommand
@@ -67,10 +71,13 @@ namespace Wander.MetaConsole
 		}
 		
 		/// Execute a line of input, such as from a command console or config file. 
+		/// Keep in mind this should be a line of input, any linebreaks will be
+		/// passed to commands, not executed as seperate lines.
 		/// You can seperate commands by using a ;
 		public static void Execute(string input)
 		{
 			if (String.IsNullOrEmpty(input)) return;
+			if (input.StartsWith("#")) return; // Is a comment.
 			
 			var inputs = input.Split(';');
 			

@@ -57,7 +57,7 @@ namespace Wander.MetaConsole
         currentValue = Clamp(value);
       }
 
-      if (archive)
+      if (archive && CommandLine.ShouldWriteArchive)
         CommandLine.Archive.Set(Name, value.ToString());
     }
 
