@@ -37,9 +37,6 @@ namespace Wander.MetaConsole
       // strings, but currently the infrastructure supports them.
       Assert.IsTrue(value != null);
 
-      concreteArgsCount = 0;
-      optionalArgsCount = 1;
-
       currentValue  = Clamp(value);
       latchValue    = Clamp(value);
       defaultValue  = Clamp(value);
@@ -59,6 +56,9 @@ namespace Wander.MetaConsole
       } else {
         currentValue = Clamp(value);
       }
+
+      if (archive)
+        CommandLine.Archive.Set(Name, value.ToString());
     }
 
     protected string PrintValue()
@@ -76,18 +76,15 @@ namespace Wander.MetaConsole
     protected override void InvokeInternal(string[] args)
     {
       try {
-				switch(args.Length) {
-					case 0: 
-            CommandLine.WriteLine(
+        if (args.Length == 0) {
+          CommandLine.WriteLine(
               "{0} ({1}): {2}\nValue is {3}", 
               Name, typeof(T), Description, PrintValue()
-              ); 
-            break;
-					case 1: 
-            SetValue(StringParser.Parse<T>(args[0]));
-            CommandLine.WriteLine("{0} << {1}", Name, PrintValue());
-            break;
-				}
+          ); 
+        } else {
+          SetValue(StringParser.Parse<T>(String.Join(" ", args)));
+          CommandLine.WriteLine("{0} << {1}", Name, PrintValue());
+        }
 			} catch (Exception e){
 				CommandLine.WriteLine("{0} Usage: {1}", e.Message, Usage);
 			}

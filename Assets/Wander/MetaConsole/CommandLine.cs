@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using System.Linq;
 using UnityEngine.Assertions;
 using System.Text;
+using UnityEngine;
 
 namespace Wander.MetaConsole
 {
@@ -13,6 +14,7 @@ namespace Wander.MetaConsole
 		
 		/// Invoked when Write or WriteLine is called with the message supplied.
 		public static readonly WriteEvent OnWrite = new WriteEvent();
+		public static ArchiveFile Archive { get; private set; }
 		public static IReadOnlyCollection<ICommand> Commands 
 			{ get { return commands.AsReadOnly(); } }
 
@@ -25,6 +27,9 @@ namespace Wander.MetaConsole
 
 		public static void InitCommandLine()
 		{
+			if (Archive != null)
+				Debug.LogWarning("Reference not cleared on assembly reload...");
+
 			commands.Clear();
 
 			UnityEngine.Debug.Log("Command line init.");
@@ -33,6 +38,9 @@ namespace Wander.MetaConsole
 			// type abuse.
 			commands.AddRange(AutoCommandHandler.GenerateAutoCommandsList());
 			commands.AddRange(BuiltInVariables.GetVariableList());
+
+			Archive = new ArchiveFile("archive.cfg");
+			Archive.Execute();
 		}
 
 		public static T AddCommand<T>(T command) where T : ICommand
