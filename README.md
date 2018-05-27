@@ -64,3 +64,9 @@ Connecting to 127.0.0.1:1234...
 ```
 
 As shown, argument counts, parsing formats and optional arguments are all accounted for.
+
+## What's next?
+
+There are a few things that need to be changed. One thing that needs to be changed is input parsing that respects quotes and escape sequences. Some features I would like to add would prehaps be generic and/or automatic ways of creating variables, just like functions. I would also like to see how feasible it is to use the command line for binding game input, like many games give the option to do, but Unity are apparently working on a new input system.
+
+This module will be a core part of the networking system I am working on, once I am happy with this project I will move on to rebuilding my networking prototypes with a command line in mind.
